@@ -29,9 +29,9 @@ class CatalogMultiplex(CatalogAware, WorkflowAware, OpaqueItemManager):
         else:
             return at.getCatalogsByType(self.meta_type)
 
-    security.declareProtected(ModifyPortalContent, 'indexObject')
+    security.declareProtected(ModifyPortalContent, '_indexObject')
 
-    def indexObject(self):
+    def _indexObject(self):
         if isFactoryContained(self):
             return
         catalogs = self.getCatalogs()
@@ -39,9 +39,9 @@ class CatalogMultiplex(CatalogAware, WorkflowAware, OpaqueItemManager):
         for c in catalogs:
             c.catalog_object(self, url)
 
-    security.declareProtected(ModifyPortalContent, 'unindexObject')
+    security.declareProtected(ModifyPortalContent, '_unindexObject')
 
-    def unindexObject(self):
+    def _unindexObject(self):
         if isFactoryContained(self):
             return
         catalogs = self.getCatalogs()
@@ -84,9 +84,9 @@ class CatalogMultiplex(CatalogAware, WorkflowAware, OpaqueItemManager):
                 catalog.reindexObject(ob, idxs=self._cmf_security_indexes,
                                       update_metadata=0, uid=brain_path)
 
-    security.declareProtected(ModifyPortalContent, 'reindexObject')
+    security.declareProtected(ModifyPortalContent, '_reindexObject')
 
-    def reindexObject(self, idxs=None):
+    def _reindexObject(self, idxs=None):
         # Update indexes of this object in all registered catalogs.
         #
         # Catalogs are registered per 'meta_type' in archetypes tool.
