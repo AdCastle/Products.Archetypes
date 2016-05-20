@@ -6,7 +6,10 @@ Changelog
 
 Breaking changes:
 
-- *add item here*
+- Make ``indexObject``, ``reindexObject`` and ``unindexObject`` private.
+  Products.CMFCore indexing functionality will be calling them as part of the indexing operations optimization.
+  Part of PLIP 1343: https://github.com/plone/Products.CMFPlone/issues/1343
+  [gforcada]
 
 New features:
 
